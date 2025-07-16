@@ -52,8 +52,6 @@ export default function DashboardPage() {
       <Typography variant="h5" mb={2} color="text.primary">
         Your Chatrooms
       </Typography>
-
-      {/* Chatroom Creation */}
       <Box display="flex" gap={2} mb={3}>
         <TextField
           label="New Chatroom"
@@ -66,8 +64,6 @@ export default function DashboardPage() {
           Add
         </Button>
       </Box>
-
-      {/* Chatroom Accordions */}
       <Box>
         {chatrooms.map((chatroom, index) => (
           <Box key={chatroom.id} mb={1}>
@@ -94,7 +90,7 @@ export default function DashboardPage() {
               </AccordionSummary>
               <Divider />
               <AccordionDetails>
-                <ChatWindow chatroomId={chatroom.id} />
+                <ChatWindow />
               </AccordionDetails>
             </Accordion>
           </Box>
