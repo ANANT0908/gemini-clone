@@ -6,8 +6,8 @@ import { CssBaseline, useMediaQuery } from '@mui/material';
 import Header from '@/components/Header';
 import { Provider } from 'react-redux';
 import { store } from '@/store';
+import { ColorModeContext } from './contexts/ColorModeContext';
 
-export const ColorModeContext = createContext({ toggleColorMode: () => { }, mode: 'light' });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');

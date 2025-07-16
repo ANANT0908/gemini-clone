@@ -2,9 +2,10 @@
 
 import { IconButton, Tooltip } from '@mui/material';
 import { useContext } from 'react';
-import { ColorModeContext } from '@/app/layout';
+
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { ColorModeContext } from '@/app/contexts/ColorModeContext';
 
 export default function ThemeToggle() {
   const { toggleColorMode, mode } = useContext(ColorModeContext);
