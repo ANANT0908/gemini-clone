@@ -1,4 +1,3 @@
-// components/ThemeToggle.tsx
 'use client';
 
 import { IconButton, Tooltip } from '@mui/material';
