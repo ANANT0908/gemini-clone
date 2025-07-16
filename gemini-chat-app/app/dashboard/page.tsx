@@ -81,7 +81,7 @@ export default function DashboardPage() {
                 <IconButton
                   size="small"
                   onClick={(e) => {
-                    e.stopPropagation(); // Prevent accordion toggle
+                    e.stopPropagation(); 
                     handleDelete(chatroom.id);
                   }}
                 >
