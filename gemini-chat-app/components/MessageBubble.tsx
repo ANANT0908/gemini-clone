@@ -1,8 +1,9 @@
 'use client';
+
 import { Message } from '@/store/messagesSlice';
 import { Box, Typography, IconButton } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import copy   from 'copy-to-clipboard';
+import copy from 'copy-to-clipboard';
 import { useState } from 'react';
 
 export default function MessageBubble({ message }: { message: Message }) {
@@ -13,31 +14,58 @@ export default function MessageBubble({ message }: { message: Message }) {
 
   const handleCopy = () => {
     if (message.text) {
-      copy (message.text);
+      copy(message.text);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
   };
 
   return (
-    <Box sx={{ display:'flex', justifyContent: align, mb:1, position:'relative' }}>
-      <Box sx={{ maxWidth:'60%', bgcolor:bg, p:1.5, borderRadius:2, position:'relative' }}>
+    <Box sx={{ display: 'flex', justifyContent: align, mb: 1 }}>
+      <Box
+        sx={{
+          maxWidth: '60%',
+          bgcolor: bg,
+          p: 2,
+          borderRadius: 2,
+          position: 'relative',
+          boxShadow: 1,
+        }}
+      >
+        {message.text && (
+          <Box sx={{ position: 'absolute', top: 8, right: 8 }}>
+            <IconButton size="small" onClick={handleCopy}>
+              <ContentCopyIcon fontSize="small" />
+            </IconButton>
+          </Box>
+        )}
         {message.imageUrl && (
-          <img src={message.imageUrl} alt="upload" style={{ maxWidth: '100%', borderRadius: 8 }} />
+          <img
+            src={message.imageUrl}
+            alt="upload"
+            style={{ maxWidth: '100%', borderRadius: 8, marginBottom: 8 }}
+          />
         )}
         {message.text && (
-          <Typography>{message.text}</Typography>
+          <Typography sx={{ pr: 4 }}>{message.text}</Typography> 
         )}
-        <Typography variant="caption" sx={{ display:'block', textAlign:'right', mt:0.5 }}>
+        <Typography
+          variant="caption"
+          sx={{ display: 'block', textAlign: 'right', mt: 0.5 }}
+        >
           {new Date(message.timestamp).toLocaleTimeString()}
         </Typography>
-        {message.text && (
-          <IconButton size="small" sx={{ position:'absolute', top:4, right:4 }} onClick={handleCopy}>
-            <ContentCopyIcon fontSize="small" />
-          </IconButton>
-        )}
         {copied && (
-          <Typography variant="caption" sx={{ position:'absolute', top:-16, right:0, color:'green' }}>
+          <Typography
+            variant="caption"
+            sx={{
+              position: 'absolute',
+              top: -20,
+              right: 0,
+              color: 'green',
+              fontSize: '0.75rem',
+            }}
+          >
             Copied!
           </Typography>
         )}
