@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💬 Gemini Chat App
 
-## Getting Started
+A full-stack modern chat application inspired by WhatsApp. Built using **Next.js 14 App Router**, **TypeScript**, **Redux Toolkit**, and **MUI**, with features like dark mode, OTP-based login, chatroom creation, and infinite scrolling.
 
-First, run the development server:
+## 🔗 Live Demo
+
+👉 [View Live](https://gemini-clone-rust-tau.vercel.app/)
+
+---
+
+## 🚀 Project Overview
+
+* 🔐 **OTP-based Authentication**
+* 💡 **Dark Mode Toggle**
+* 📱 **Responsive UI using MUI**
+* 🧩 **Chatroom Creation & Deletion**
+* ♾️ **Infinite Scroll for Messages**
+* 🧪 **Form Validation with Zod**
+* 🧠 **Redux Toolkit for State Management**
+
+---
+
+## 💪 Setup Instructions
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/ANANT0908/gemini-clone.git
+cd gemini-chat-app
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3. Run Development Server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> The app will be live on `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧱 Folder Structure
 
-## Learn More
+```bash
+.
+├── app/                # App Router pages (Next.js 14)
+│   ├── layout.tsx      # Root layout with ThemeContext
+│   └── page.tsx        # Homepage with login
+│   └── dashboard/      # Dashboard with chat interface
+├── components/
+│   ├── AuthForm.tsx         # Login form with OTP
+│   ├── ChatWindow.tsx       # Chat display
+│   ├── ChatroomList.tsx     # Create/delete chatrooms
+│   ├── Header.tsx           # AppBar with theme + logout
+│   └── ThemeToggle.tsx      # Light/Dark toggle button
+├── store/
+│   ├── index.ts             # Redux store
+│   ├── authSlice.ts         # Auth-related logic
+│   └── chatSlice.ts         # Chatroom logic
+├── context/
+│   └── ThemeContext.tsx     # MUI theme toggle context
+├── utils/
+│   ├── validatePhone.ts     # Zod validation schema
+│   └── countryService.ts    # Fetch country codes
+├── styles/
+│   └── globals.css          # Tailwind & CSS variables
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Key Implementations
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### ✅ Throttling
 
-## Deploy on Vercel
+* **OTP simulation** uses a simple `setTimeout` for throttling OTP requests in `AuthForm.tsx`.
+* You can enhance it using `lodash.throttle` if API rate-limiting is required.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 📄 Pagination & Infinite Scroll
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Messages (simulated in `ChatWindow`) support **infinite scrolling** with `onScroll` event.
+* You can later plug in paginated API calls from the backend.
+
+### ♾️ Infinite Scroll (Concept)
+
+```ts
+const handleScroll = () => {
+  if (scrollTop === 0 && hasMore) {
+    loadMoreMessages(); // Load older messages
+  }
+};
+```
+
+### ✅ Form Validation
+
+* Zod schema used with `react-hook-form` to validate inputs.
+
+```ts
+const phoneSchema = z.object({
+  countryCode: z.string().min(1, 'Select a country code'),
+  phone: z.string().regex(/^\d{10}$/, 'Enter valid 10-digit number'),
+});
+```
+
+---
+
+## 🧑‍💻 Author
+
+Made with ❤️ by [Anant Verma](https://github.com/ANANT0908/gemini-clone)
+
