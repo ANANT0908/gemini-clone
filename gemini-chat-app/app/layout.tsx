@@ -1,4 +1,3 @@
-// app/layout.tsx
 'use client';
 
 import { ReactNode, createContext, useMemo, useState, useEffect } from 'react';

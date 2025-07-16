@@ -1,4 +1,3 @@
-// components/Header.tsx
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 import ThemeToggle from './ThemeToggle';
 

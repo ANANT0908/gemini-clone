@@ -7,21 +7,16 @@ import { Toaster } from 'react-hot-toast';
 
 export default function DashboardPage() {
   return (
-    <Container maxWidth="lg" sx={{ mt: 6 }}>
+    <Container maxWidth="lg">
       <Toaster position="top-right" />
-      
+
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
-        }}
-      >
-        <Box sx={{ flex: 1 }}>
-          <ChatroomList />
-        </Box>
-        <Box sx={{ flex: 2 }}>
-          <ChatWindow />
-        </Box>
+        }}>
+        <ChatroomList />
+        <ChatWindow />
       </Box>
     </Container>
   );
