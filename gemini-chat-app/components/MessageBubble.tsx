@@ -5,6 +5,7 @@ import { Box, Typography, IconButton, useTheme } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import copy from 'copy-to-clipboard';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function MessageBubble({ message }: { message: Message }) {
   const [copied, setCopied] = useState(false);
@@ -56,11 +57,14 @@ export default function MessageBubble({ message }: { message: Message }) {
           </IconButton>
         )}
         {message.imageUrl && (
-          <img
+          <Image
             src={message.imageUrl}
             alt="upload"
+            width={400} // or your expected width
+            height={300} // or your expected height
             style={{
-              maxWidth: '100%',
+              width: '100%',
+              height: 'auto',
               borderRadius: 8,
               marginBottom: 8,
               objectFit: 'cover',

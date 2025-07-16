@@ -6,7 +6,7 @@ import { loadOlder, userMessage, aiTyping, aiMessage } from '@/store/messagesSli
 import MessageBubble from './MessageBubble';
 import ImageUpload from './ImageUpload';
 import { Box, Button, CircularProgress, TextField, useTheme } from '@mui/material';
-import { v4 as uuidv4 } from 'uuid';
+
 
 export default function ChatWindow() {
   const dispatch = useDispatch();

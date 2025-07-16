@@ -10,13 +10,17 @@ import { useDispatch } from 'react-redux';
 import { sendOtp } from '@/store/authSlice';
 
 type FormData = z.infer<typeof phoneSchema>;
-
+type Country = {
+  name: string;
+  code: string;
+  dialCode: string;
+};
 export default function AuthForm() {
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(phoneSchema),
   });
   const dispatch = useDispatch();
-  const [countries, setCountries] = useState<any[]>([]);
+  const [countries, setCountries] = useState<Country[]>([]);
 
   useEffect(() => {
     fetchCountries().then(setCountries);

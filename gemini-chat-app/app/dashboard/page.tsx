@@ -65,7 +65,7 @@ export default function DashboardPage() {
         </Button>
       </Box>
       <Box>
-        {chatrooms.map((chatroom, index) => (
+        {chatrooms.map((chatroom) => (
           <Box key={chatroom.id} mb={1}>
             <Accordion
               expanded={expandedRoomId === chatroom.id}

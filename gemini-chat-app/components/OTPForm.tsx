@@ -18,7 +18,7 @@ export default function OTPForm() {
   const dispatch = useDispatch();
   const phone = useSelector((state: RootState) => state.auth.phone);
 
-  const onSubmit = (data: OTPData) => {
+  const onSubmit = () => {
     console.log('Simulating OTP verification...');
     setTimeout(() => {
       dispatch(verifyOtp());

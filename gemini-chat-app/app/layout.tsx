@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, createContext, useMemo, useState, useEffect } from 'react';
+import { ReactNode, useMemo, useState, useEffect } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline, useMediaQuery } from '@mui/material';
 import Header from '@/components/Header';
